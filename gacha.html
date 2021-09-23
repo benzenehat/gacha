@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UFT-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>ガチャ</title>
+    <!-- <style>
+        #gazou {
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style> -->
+    <base target="_top" />
+</head>
+
+<body>
+    <div id="gacha-image">
+        <img src="https://cdn.gamerch.com/contents/wiki/1841/entry/koIgQdVz.gif" id="kouka" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+        " />
+    </div>
+
+    <div id="gacha-result" style="display: none;">
+        <h2>
+            <!-- <?= name ?> -->
+            白衣ゼリッピ
+        </h2>
+        <!-- <img id="gazou" src="<?= url ?>" /> -->
+        
+        <div id="layer">
+            <img id="gazou" src="https://competent-turing-f6441d.netlify.app/LINE_ALBUM_210921_5.jpg" />
+            <p>N</p>
+        </div>
+
+        <h3>
+            レア度:
+            <!-- <?= rare ?> -->
+            N
+        </h3>
+
+        <h4>
+            メッセージ:
+            <!-- <?= message ?> -->
+            はっはっは
+        </h4>
+        <form id="myform"
+            action="https://script.google.com/macros/s/AKfycbwY-hsicE0TJNsSjik3E5KoVc3G02u1UsDlXYeRqFxh36nHQ1uAdidMVIB4gGTdQJGy/exec">
+            <input type="text" name="sheetname" style="display: none;" value="<?= sheetname ?>" />
+            <button id="submitbutton" class="btn btn-primary" onclick="gachaSubmit()">
+                もう一度引く
+            </button>
+        </form>
+        <br />
+        <a
+            href="https://script.google.com/macros/s/AKfycbwY-hsicE0TJNsSjik3E5KoVc3G02u1UsDlXYeRqFxh36nHQ1uAdidMVIB4gGTdQJGy/exec">
+            <button class="btn btn-secondary">戻る</button>
+        </a>
+    </div>
+
+    <script type="text/javascript">
+        function gachaSubmit() {
+            var target = document.getElementById("submitbutton");
+            target.setAttribute("disabled", true);
+            target.innerHTML = "待機中…";
+            var myform = document.getElementById("myform");
+            myform.action =
+                "https://script.google.com/macros/s/AKfycbwY-hsicE0TJNsSjik3E5KoVc3G02u1UsDlXYeRqFxh36nHQ1uAdidMVIB4gGTdQJGy/exec";
+            myform.method = "POST";
+            myform.submit();
+        }
+
+        function timer() {
+            timerId = setTimeout(vanishImage, 0);
+        }
+
+        function vanishImage() {
+            document.getElementById("gacha-image").style.display = "none";
+            document.getElementById("gacha-result").style.display = "block";
+            clearTimeout(timerId);
+        }
+
+        document.body.onload = timer;
+    </script>
+</body>
+</html>

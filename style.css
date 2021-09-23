@@ -1,0 +1,35 @@
+#gacha-result {
+    text-align: center;
+}
+
+#layer {
+    position: relative;
+    margin:0 auto;
+    height: 400px;
+    width: 400px;
+}
+
+#gazou {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: zoomInDown;
+    animation-duration: 1s;
+}
+
+#layer p {
+    font-size: 100px;
+    position: absolute;/*絶対配置*/
+    font-weight: bold;
+    color:#ff9065;/*文字は白に*/
+    text-shadow: 0 0 0.2em rgba(0,0,0,1);
+    bottom: 0;
+    right: 0;
+    opacity:0;
+    animation: fadeIn;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    
+}
